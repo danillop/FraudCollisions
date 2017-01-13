@@ -4,7 +4,7 @@ defmodule CollisionDetecterTest do
 
   test "return network collisions" do
     graph = [[1,2], [2,3], [1,4], [5,6], [6, 7]]
-    assert CollisionDetecter.detect(graph) ==  [[1, 2, 3, 4], [5, 6, 7]]
+    assert CollisionDetecter.detect(graph) == {:ok, %{collisions: [[1, 2, 3, 4], [5, 6, 7]], count: 2, message: "Collisions detected"}}
   end
 
   test ".find_and_insert_node - doesnt find an existing node so insert a new one" do

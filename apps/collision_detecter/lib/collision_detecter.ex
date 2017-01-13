@@ -1,4 +1,13 @@
 defmodule CollisionDetecter do
+  @moduledoc ~S"""
+  Detect network collisions on graph's nodes.
+
+  ## Examples
+
+      iex> CollisionDetecter.detect([[1,2], [2,3], [4,5], [5,6]])
+      {:ok, %{collisions: [[1, 2, 3], [4, 5, 6]], count: 2, message: "Collisions detected"}}
+  """
+
   def detect(graph) do
     graph
     |> Enum.sort
@@ -6,8 +15,15 @@ defmodule CollisionDetecter do
   end
 
   def detect_graph_collision(graph) do
-    graph
-    |> Enum.reduce([], fn(node, acc) -> find_and_insert_node(node, acc) end)
+    case return_graph_collision(graph) do
+      {0, _} -> {:ok, %{count: 0, message: "No collisions detected in the graph."}}
+      {collisions_count, collisions} -> {:ok, %{message: "Collisions detected", count: collisions_count, collisions: collisions}}
+    end
+  end
+
+  def return_graph_collision(graph) do
+    graph_collisions = graph |> Enum.reduce([], fn(node, acc) -> find_and_insert_node(node, acc) end)
+    {Enum.count(graph_collisions), graph_collisions}
   end
 
   def find_and_insert_node(node, acc) do
