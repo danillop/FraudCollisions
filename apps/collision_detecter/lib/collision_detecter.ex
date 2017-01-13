@@ -1,0 +1,2 @@
+defmodule CollisionDetecter do
+end
