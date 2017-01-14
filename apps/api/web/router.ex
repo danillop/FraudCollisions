@@ -13,14 +13,16 @@ defmodule Api.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Api do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
-  end
+  #scope "/", Api do
+  #    pipe_through :browser # Use the default browser stack
+  #
+  #  get "/", PageController, :index
+  #end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Api do
-  #   pipe_through :api
-  # end
+  scope "/api", Api do
+    pipe_through :api
+
+    resources "/networkcollisions", Api.NetworkCollisionController, only: [:index]
+  end
 end
