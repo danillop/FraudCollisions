@@ -7,7 +7,7 @@ defmodule Api.NetworkCollisionTest do
      "collision_result" => %{
        "message" => "Collisions detected",
        "count" => 2,
-       "collisions" => [[1, 2, 3, 4], [5, 6, 7]]
+       "collisions" => [["1","2","3", "4"], ["5", "6", "7"]]
      }
     }
   end
