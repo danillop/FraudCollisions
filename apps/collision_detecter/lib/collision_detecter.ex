@@ -22,7 +22,11 @@ defmodule CollisionDetecter do
   end
 
   def return_graph_collision(graph) do
-    graph_collisions = graph |> Enum.reduce([], fn(node, acc) -> find_and_insert_node(node, acc) end)
+    graph_collisions =
+      graph
+      |> Enum.reduce([], fn(node, acc) -> find_and_insert_node(node, acc) end)
+      |> Enum.filter(fn(subset) -> Enum.count(subset) > 2 end)
+
     {Enum.count(graph_collisions), graph_collisions}
   end
 
