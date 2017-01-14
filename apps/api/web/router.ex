@@ -23,6 +23,6 @@ defmodule Api.Router do
   scope "/api", Api do
     pipe_through :api
 
-    resources "/networkcollisions", Api.NetworkCollisionController, only: [:index]
+    resources "/networkcollisions", NetworkCollisionController, only: [:index]
   end
 end

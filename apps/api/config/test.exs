@@ -8,3 +8,6 @@ config :api, Api.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+#InMemory test services
+config :api, :collisions_service, Api.CollisionsService.InMemory
