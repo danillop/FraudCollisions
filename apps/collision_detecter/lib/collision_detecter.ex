@@ -1,6 +1,6 @@
 defmodule CollisionDetecter do
   @moduledoc ~S"""
-  Detect network collisions on graph's nodes.
+  Detect network collisions on graph's nodes. Graph nodes need to be sorted {1,2} and not {2,1}.
 
   ## Examples
 
