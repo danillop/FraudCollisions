@@ -34,4 +34,4 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 #Application services
-config :api, :collisions_service, Api.CollisionsService.FileImportService
+config :api, :collisions_service, Api.CollisionsService.FileService

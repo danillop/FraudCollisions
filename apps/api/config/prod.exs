@@ -61,4 +61,4 @@ config :logger, level: :info
 import_config "prod.secret.exs"
 
 #Application services
-config :api, :collisions_service, Api.CollisionsService.FileImportService
+config :api, :collisions_service, Api.CollisionsService.FileService
