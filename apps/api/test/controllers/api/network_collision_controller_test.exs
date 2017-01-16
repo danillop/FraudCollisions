@@ -11,4 +11,11 @@ defmodule Api.NetworkCollisionTest do
      }
     }
   end
+
+  test "add new collisions between two nodes", %{conn: conn} do
+    conn = post conn, network_collision_path(conn, :create, node_a: "a", node_b: "b")
+    assert json_response(conn,  200) == %{
+      "message" => "Collision added: a b"
+    }
+  end
 end

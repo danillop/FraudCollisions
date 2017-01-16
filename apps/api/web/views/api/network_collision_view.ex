@@ -7,6 +7,12 @@ defmodule Api.NetworkCollisionView do
     }
   end
 
+  def render("post.json", %{collision: collision}) do
+    %{
+     "message" => "Collision added: #{collision}"
+    }
+  end
+
   defp collisions_result_json(collisions_result) do
     {:ok, result} = collisions_result
     %{

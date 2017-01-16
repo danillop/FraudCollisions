@@ -10,7 +10,9 @@ defmodule Api.CollisionsService.FileService do
 
   def write_collision(node_a, node_b) do
     {:ok, file} = File.open("media/collisions.txt", [:append])
-    IO.binwrite(file, "#{node_a} #{node_b}" <> "\n")
+    collision = "#{node_a} #{node_b}"
+    IO.binwrite(file, collision <> "\n")
     File.close(file)
+    {:ok, collision}
   end
 end
