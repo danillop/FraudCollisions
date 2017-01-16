@@ -24,5 +24,8 @@ defmodule Api.Router do
     pipe_through :api
 
     resources "/networkcollisions", NetworkCollisionController, only: [:index, :create]
+    scope "/networkcollisions" do
+      get "/:node_a/:node_b",NetworkCollisionController, :show
+    end
   end
 end

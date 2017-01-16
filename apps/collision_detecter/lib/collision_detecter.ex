@@ -30,6 +30,14 @@ defmodule CollisionDetecter do
     {Enum.count(graph_collisions), graph_collisions}
   end
 
+  def nodes_in_same_collision_network?(collisions, node_a, node_b) do
+    {:ok, %{collisions: collision_networks}} = detect(collisions)
+    Enum.any?(collision_networks, fn (collisions) ->
+      Enum.any?(collisions, fn (node) -> node == node_a end)
+      && Enum.any?(collisions, fn(node) -> node == node_b end)
+    end)
+  end
+
   def find_and_insert_node(node, acc) do
     node_match = fn (subset) -> Enum.any?(subset, fn(x) -> Enum.at(node, 0) == x || Enum.at(node,1) == x end) end
     subset =  Enum.find(acc, fn (subset) -> node_match.(subset) end)

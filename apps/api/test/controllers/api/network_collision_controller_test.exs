@@ -18,4 +18,18 @@ defmodule Api.NetworkCollisionTest do
       "message" => "Collision added: a b"
     }
   end
+
+  test "check collision between two nodes - expects to receive TRUE", %{conn: conn} do
+    conn = get conn, network_collision_path(conn, :show, 1, 4)
+    assert json_response(conn, 200) == %{
+     "inSameCollisionNetwork" => true
+    }
+  end
+
+  test "check collision between two nodes - expects to receive FALSE", %{conn: conn} do
+    conn = get conn, network_collision_path(conn, :show, 1, 9)
+    assert json_response(conn, 200) == %{
+      "inSameCollisionNetwork" => false
+    }
+  end
 end

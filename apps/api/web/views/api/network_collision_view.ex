@@ -13,6 +13,12 @@ defmodule Api.NetworkCollisionView do
     }
   end
 
+  def render("show.json", %{result: result}) do
+    %{
+      "inSameCollisionNetwork" => result
+    }
+  end
+
   defp collisions_result_json(collisions_result) do
     {:ok, result} = collisions_result
     %{
